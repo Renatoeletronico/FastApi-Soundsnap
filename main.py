@@ -52,7 +52,7 @@ async def search_albums(
         
         # Se não houver query, fazer 10 buscas aleatórias
         queries = [query] if query else [
-            (random.choice(string.ascii_lowercase), random.randint(0, 998)) for _ in range(10)
+            (random.choice(string.ascii_letters), random.randint(0, 998)) for _ in range(10)
         ]
 
         for q, off in queries:
@@ -60,11 +60,11 @@ async def search_albums(
             switch_case = random.randint(0, 2)
 
             if switch_case == 0:
-                random_search = q + '%25'
+                random_search = q + '%'
             elif switch_case == 1:
-                random_search = '%25' + q + '%25'
+                random_search = '%' + q + '%'
             else:
-                random_search = '%25' + q
+                random_search = '%' + q
 
             search_params = {
                 "q": random_search,
